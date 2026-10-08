@@ -1,161 +1,222 @@
-<p align="center">
-  <img src="docs/banner.png" alt="Express Mongo Start — a clear starting point for your next API" width="100%" />
-</p>
-
-<h1 align="center">Express Mongo Start</h1>
+# Express Mongo Start
 
 <p align="center">
-  A beginner-friendly JavaScript backend starter.<br />
-  Clear folders. Small files. Room for your own code.
+  <img src="docs/banner.png" alt="Express Mongo Start" width="100%" />
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/JavaScript-ES%20Modules-f7df1e?logo=javascript&logoColor=black" alt="JavaScript ES modules" />
-  <img src="https://img.shields.io/badge/Express-5-20232a?logo=express" alt="Express 5" />
-  <img src="https://img.shields.io/badge/MongoDB-Mongoose-47a248?logo=mongodb&logoColor=white" alt="MongoDB with Mongoose" />
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-38bdf8" alt="MIT License" /></a>
+  A clean, beginner-friendly Express + MongoDB backend starter built to be understood, extended, and shipped.
 </p>
 
 <p align="center">
+  <a href="https://github.com/real-VrajSoni/express-mongo-start"><img src="https://img.shields.io/github/stars/real-VrajSoni/express-mongo-start?style=flat&logo=github" alt="GitHub stars" /></a>
+  <a href="https://github.com/real-VrajSoni/express-mongo-start/network/members"><img src="https://img.shields.io/github/forks/real-VrajSoni/express-mongo-start?style=flat&logo=github" alt="GitHub forks" /></a>
+  <img src="https://img.shields.io/badge/Node.js-22.12%2B-339933?logo=node.js&logoColor=white" alt="Node.js 22.12 or newer" />
+  <img src="https://img.shields.io/badge/Express-5-black?logo=express" alt="Express 5" />
+  <img src="https://img.shields.io/badge/MongoDB-Mongoose-47A248?logo=mongodb&logoColor=white" alt="MongoDB with Mongoose" />
+  <img src="https://img.shields.io/badge/ESM-native-F7DF1E?logo=javascript&logoColor=black" alt="JavaScript ES modules" />
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-38bdf8" alt="MIT license" /></a>
+</p>
+
+<p align="center">
+  <a href="#why-this-starter">Why this starter</a> ·
   <a href="#quick-start">Quick start</a> ·
-  <a href="#project-structure">Project structure</a> ·
-  <a href="#how-the-files-connect">How it works</a> ·
-  <a href="#make-it-your-project">Make it yours</a> ·
-  <a href="CONTRIBUTING.md">Contribute</a>
+  <a href="#project-structure">Structure</a> ·
+  <a href="#api">API</a> ·
+  <a href="#build-on-top-of-it">Build on top</a>
 </p>
 
-## A starting point you can understand
+---
 
-Use this repo when you want an Express and MongoDB project with a clear place for each file. It includes the server setup, database connection, shared response/error helpers, and an auth module you can build on.
+## Why this starter
 
-**Auth is a starter scaffold.** Register, login, forgot-password, logout, and reset-password routes return **501 Not Implemented** until you add their logic. This repo does not create users, authenticate requests, or send password-reset emails yet.
+Most backend tutorials become hard to maintain once the first few routes are working.
 
-- **Simple setup:** four dependencies — Express, Mongoose, dotenv, and CORS.
-- **Shared code:** database settings, DTOs, middleware, and helpers go in `common`.
-- **Feature code:** each feature gets its own folder in `module`.
-- **Easy to reuse:** use the template, change the database name, and start coding.
+**Express Mongo Start** keeps the starting point deliberately small:
+
+- **Feature-first folders** so related code stays together.
+- **Shared utilities** for predictable API responses and errors.
+- **MongoDB connection setup** already wired into server startup.
+- **Auth scaffold** with routes, DTOs, controllers, services, model, and middleware separated by responsibility.
+- **No fake functionality** — auth service methods explicitly return `501 Not Implemented` until you add the real logic.
+
+> This is a **starter**, not a finished authentication system.
+
+That distinction is intentional. You get the structure without inheriting a pile of unexplained code.
+
+## Tech stack
+
+| Tool | Purpose |
+| --- | --- |
+| **Node.js 22.12+** | Runtime |
+| **Express 5** | HTTP server and routing |
+| **MongoDB** | Database |
+| **Mongoose 9** | MongoDB ODM |
+| **dotenv** | Environment configuration |
+| **CORS** | Cross-origin request handling |
+| **ES Modules** | Native JavaScript module system |
 
 ## Quick start
 
-You need **Node.js 22.12 or newer** and a MongoDB database, running locally or on MongoDB Atlas.
+### 1. Create your project
 
-### 1. Get the starter
+You can use this repository as a template:
 
-Click **[Use this template](https://github.com/real-VrajSoni/express-mongo-start/generate)** to create your own repo, or clone this one:
+**[Use this template](https://github.com/real-VrajSoni/express-mongo-start/generate)**
 
-```sh
+Or clone it:
+
+```bash
 git clone https://github.com/real-VrajSoni/express-mongo-start.git
 cd express-mongo-start
 npm install
 ```
 
-### 2. Add your database settings
+### 2. Configure MongoDB
 
-```sh
+Copy the example environment file:
+
+```bash
 cp .env.example .env
 ```
 
-On Windows, copy `.env.example` and rename the copy to `.env` in your file explorer.
+Then set your values:
 
 ```env
 PORT=3000
 MONGODB_URI=mongodb://127.0.0.1:27017/my_project
 ```
 
-The example uses a local MongoDB server, which must be running. For Atlas, replace `MONGODB_URI` with your Atlas connection string, including your database name. Keep `.env` private; Git ignores it.
+Use a local MongoDB instance or replace the URI with your MongoDB Atlas connection string.
 
-### 3. Run it
+### 3. Start the server
 
-```sh
+Development:
+
+```bash
 npm run dev
 ```
 
-Open **http://localhost:3000** to see `Welcome to your API!`. JavaScript changes restart the server automatically. Use `npm start` to run without watching files. Restart the server after changing `.env`.
+Production-style start:
+
+```bash
+npm start
+```
+
+Then open:
+
+**http://localhost:3000**
+
+You should get:
+
+```json
+{
+  "success": true,
+  "message": "Welcome to your API!",
+  "data": null
+}
+```
 
 ## Project structure
 
 ```text
-src/
-├── common/
-│   ├── config/
-│   │   └── db.js
-│   ├── dto/
-│   │   └── README.md
-│   ├── middleware/
-│   │   └── errorHandler.js
-│   └── utils/
-│       ├── ApiError.js
-│       ├── ApiResponse.js
-│       └── README.md
-├── module/
-│   └── auth/
-│       ├── Dto/
-│       │   ├── register.dto.js
-│       │   ├── login.dto.js
-│       │   ├── forgot-password.dto.js
-│       │   ├── logout.dto.js
-│       │   └── reset-password.dto.js
-│       ├── controller.js
-│       ├── middleware.js
-│       ├── routes.js
-│       ├── model.js
-│       └── service.js
-└── app.js
+express-mongo-start/
+├── src/
+│   ├── common/
+│   │   ├── config/
+│   │   │   └── db.js
+│   │   ├── dto/
+│   │   ├── middleware/
+│   │   │   └── errorHandler.js
+│   │   └── utils/
+│   │       ├── ApiError.js
+│   │       └── ApiResponse.js
+│   │
+│   ├── module/
+│   │   └── auth/
+│   │       ├── Dto/
+│   │       │   ├── register.dto.js
+│   │       │   ├── login.dto.js
+│   │       │   ├── forgot-password.dto.js
+│   │       │   ├── logout.dto.js
+│   │       │   └── reset-password.dto.js
+│   │       ├── controller.js
+│   │       ├── middleware.js
+│   │       ├── model.js
+│   │       ├── routes.js
+│   │       └── service.js
+│   │
+│   └── app.js
+│
+├── docs/
+├── .env.example
+├── server.js
+├── package.json
+└── LICENSE
 ```
 
-`server.js` is in the project root. It reads `.env`, connects to MongoDB, and starts Express. The small README files explain where shared DTOs and helpers belong.
+### What each layer does
 
-| Location | What belongs here |
+| Layer | Responsibility |
 | --- | --- |
-| `common/config` | Settings shared by the app, such as the database connection. |
-| `common/dto` | DTOs used by more than one feature. |
-| `common/middleware` | Shared request and error handlers. |
-| `common/utils` | `ApiError` for HTTP errors and `ApiResponse` for consistent JSON responses. |
-| `auth/Dto` | Functions that pick the input fields for each auth action. |
-| `auth/routes.js` | URLs and the controller functions they call. |
-| `auth/controller.js` | Read the request and send the response. |
-| `auth/service.js` | Add the steps that perform each action. |
-| `auth/model.js` | Describe the user data stored in MongoDB. |
-| `auth/middleware.js` | A place for auth-specific checks when you implement login. |
+| `routes.js` | Maps HTTP endpoints to controllers |
+| `controller.js` | Reads requests and sends responses |
+| `Dto/` | Picks the input fields a feature needs |
+| `service.js` | Holds the actual business logic |
+| `model.js` | Defines MongoDB data through Mongoose |
+| `middleware.js` | Home for auth-specific request checks |
+| `common/` | Shared configuration, middleware, DTOs, and utilities |
 
-**DTO** means **Data Transfer Object**. Here, a DTO is just a small function that picks fields from a request body. The DTOs do not validate input or check passwords; add those checks when you implement the service.
+The separation is intentionally simple:
 
-## How the files connect
+**route → controller → DTO → service → model → database**
+
+## How a request flows
 
 ```mermaid
 flowchart LR
-    A[Client] --> B[routes.js]
-    B --> C[controller.js]
-    C --> D[Dto: pick fields]
-    D --> E[service.js]
-    E -. add database logic .-> F[model.js]
-    F -.-> G[(MongoDB)]
+    A[Client] --> B[Route]
+    B --> C[Controller]
+    C --> D[DTO]
+    D --> E[Service]
+    E --> F[Model]
+    F --> G[(MongoDB)]
+    C --> H[ApiResponse]
+    E --> I[ApiError]
+    I --> J[Error Handler]
 ```
 
-For `/api/auth/register`, the route calls the controller. The controller picks `name`, `email`, and `password` using the register DTO, then passes them to the service. The service currently throws a 501 error with a message telling you where to add your code.
+For the current auth scaffold, the final database step is intentionally not implemented yet. The service throws a clear `501` error instead of pretending authentication works.
 
-![Register DTO and controller from the starter](docs/code-preview.png)
+![Code preview](docs/code-preview.png)
 
-[Read the DTO](src/module/auth/Dto/register.dto.js) · [Read the controller](src/module/auth/controller.js) · [Read the service](src/module/auth/service.js)
+## API
 
-## Try a route
+### Welcome endpoint
 
-| Method | Route | Current behavior |
+| Method | Endpoint | Current result |
 | --- | --- | --- |
-| GET | `/` | Welcome message |
-| POST | `/api/auth/register` | 501 placeholder |
-| POST | `/api/auth/login` | 501 placeholder |
-| POST | `/api/auth/forgot-password` | 501 placeholder |
-| POST | `/api/auth/logout` | 501 placeholder |
-| POST | `/api/auth/reset-password` | 501 placeholder |
+| `GET` | `/` | Welcome response |
 
-```sh
+### Auth scaffold
+
+| Method | Endpoint | Current result |
+| --- | --- | --- |
+| `POST` | `/api/auth/register` | `501 Not Implemented` |
+| `POST` | `/api/auth/login` | `501 Not Implemented` |
+| `POST` | `/api/auth/forgot-password` | `501 Not Implemented` |
+| `POST` | `/api/auth/logout` | `501 Not Implemented` |
+| `POST` | `/api/auth/reset-password` | `501 Not Implemented` |
+
+Example:
+
+```bash
 curl -i -X POST http://localhost:3000/api/auth/register \
   -H 'Content-Type: application/json' \
   -d '{"name":"Alex","email":"alex@example.com","password":"example-password"}'
 ```
 
-The response is deliberately clear:
+The response uses the shared response shape:
 
 ```json
 {
@@ -165,39 +226,78 @@ The response is deliberately clear:
 }
 ```
 
-## Response and error helpers
+## Consistent responses
 
-Use `sendResponse` from [`ApiResponse.js`](src/common/utils/ApiResponse.js) to keep responses consistent:
+The starter includes a tiny response helper in [`src/common/utils/ApiResponse.js`](src/common/utils/ApiResponse.js).
+
+Example:
 
 ```js
 return sendResponse(res, 200, 'Notes loaded', { notes });
 ```
 
-Each response has `success`, `message`, and `data`. Error responses have `success: false` and `data: null`.
+Every response follows the same shape:
 
-Use [`ApiError`](src/common/utils/ApiError.js) for a specific HTTP error:
+```json
+{
+  "success": true,
+  "message": "Notes loaded",
+  "data": {}
+}
+```
+
+For errors, use [`src/common/utils/ApiError.js`](src/common/utils/ApiError.js):
 
 ```js
 throw new ApiError(404, 'Note not found');
 ```
 
-The shared error handler sends the JSON response. The auth placeholders use this same pattern with status `501`.
+This keeps HTTP error handling in one place instead of repeating it throughout controllers.
 
-## Make it your project
+## Build on top of it
 
-1. Change the database name in `.env` for your project.
-2. Start with one action in `auth/service.js`, or create a new feature such as `module/notes`.
-3. Add model fields and DTO fields as your feature needs them.
-4. Connect new routes in `app.js` with `app.use()`.
+A typical next step is to replace one placeholder service with your real application logic.
 
-Add code only as your project needs it. When implementing auth, hash passwords, validate input, and add real session checks. `passwordHash` is a field for a hash; the starter does not hash passwords for you. `middleware.js` is a reserved file, not an access check.
+1. Create a new module under `src/module/`, such as `notes/`.
+2. Add its routes, controller, service, model, and DTOs.
+3. Mount the routes from `src/app.js`.
+4. Add shared pieces to `src/common/` only when they are genuinely shared.
+
+For the auth module, implement the service deliberately: validate input, hash passwords before storage, create your chosen session/token mechanism, and add the necessary authorization checks.
+
+The existing `passwordHash` field is intended for a **hash**, never a plaintext password.
+
+## What is intentionally not included
+
+This repo does **not** claim to be a production-ready auth system.
+
+It currently does not provide:
+
+- password hashing
+- token/session creation
+- request validation
+- authorization
+- password-reset email delivery
+- working auth persistence
+
+Those are extension points for the project you build on top of the starter.
 
 ## Contributing
 
-New to open source? Small improvements are welcome: clearer comments, corrected docs, or focused fixes that make the starter easier to learn.
+Improvements are welcome, especially changes that make the starter easier to understand without making it unnecessarily complicated.
 
-See **[CONTRIBUTING.md](CONTRIBUTING.md)** for a short guide. You can also **[open an issue](https://github.com/real-VrajSoni/express-mongo-start/issues/new)** with a question or suggestion.
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the contribution guidelines.
 
 ## License
 
-[MIT](LICENSE) — you can use and adapt this starter for your own projects. Keep the license notice when you redistribute it.
+Released under the [MIT License](LICENSE).
+
+---
+
+<p align="center">
+  Built to be a starting point, not another framework-sized tutorial.
+</p>
+
+<p align="center">
+  <a href="https://github.com/real-VrajSoni/express-mongo-start"><strong>⭐ Star the repo on GitHub</strong></a>
+</p>
