@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/real-VrajSoni/restful-api-starter/main/docs/hero.svg" alt="RESTful API Starter — modular Express 5 and MongoDB backend starter" width="100%" />
+  <img src="https://raw.githubusercontent.com/real-VrajSoni/restful-api-starter/2bdbed852098720ebfbcae0f3243c6417a124a06/docs/hero.svg" alt="RESTful API Starter — modular Express 5 and MongoDB backend starter" width="100%" />
 </p>
 
 <p align="center">
