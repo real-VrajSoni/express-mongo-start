@@ -65,7 +65,7 @@ This starter makes those decisions once, so your next project can start with the
 ## Architecture
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/real-VrajSoni/express-mongo-start/main/docs/architecture.svg" alt="Express Mongo Start request flow and project architecture" width="100%" />
+  <img src="https://raw.githubusercontent.com/real-VrajSoni/express-mongo-start/c9d1191733e062ab452c52a8b53fb91760081e1b/docs/architecture.svg" alt="Express Mongo Start request flow and project architecture" width="100%" />
 </p>
 
 The important idea is **separation of responsibility**, not adding layers for the sake of it.
