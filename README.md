@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/hero.svg" alt="RESTful API Starter — modular Express 5 and MongoDB backend starter" width="100%" />
+  <img src="https://raw.githubusercontent.com/real-VrajSoni/restful-api-starter/main/docs/hero.svg" alt="RESTful API Starter — modular Express 5 and MongoDB backend starter" width="100%" />
 </p>
 
 <p align="center">
@@ -65,7 +65,7 @@ This starter makes those decisions once, so your next project can start with the
 ## Architecture
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/real-VrajSoni/restful-api-starter/c9d1191733e062ab452c52a8b53fb91760081e1b/docs/architecture.svg" alt="RESTful API Starter request flow and project architecture" width="100%" />
+  <img src="https://raw.githubusercontent.com/real-VrajSoni/restful-api-starter/main/docs/architecture.svg" alt="RESTful API Starter request flow and project architecture" width="100%" />
 </p>
 
 The important idea is **separation of responsibility**, not adding layers for the sake of it.
