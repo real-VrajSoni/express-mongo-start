@@ -1,115 +1,181 @@
-# Express Mongo Start
+<p align="center">
+  <img src="docs/banner.png" alt="Express Mongo Start — a clear starting point for your next API" width="100%" />
+</p>
 
-A small JavaScript backend starter for beginners learning fullstack web development. Copy it, connect MongoDB, and start building your project.
+<h1 align="center">Express Mongo Start</h1>
 
-It uses **Express** for API routes, **Mongoose** to work with MongoDB, **dotenv** for settings, and **CORS** so your frontend can call the API.
+<p align="center">
+  A beginner-friendly JavaScript backend starter.<br />
+  Clear folders. Small files. Room for your own code.
+</p>
 
-## Start here
+<p align="center">
+  <img src="https://img.shields.io/badge/JavaScript-ES%20Modules-f7df1e?logo=javascript&logoColor=black" alt="JavaScript ES modules" />
+  <img src="https://img.shields.io/badge/Express-5-20232a?logo=express" alt="Express 5" />
+  <img src="https://img.shields.io/badge/MongoDB-Mongoose-47a248?logo=mongodb&logoColor=white" alt="MongoDB with Mongoose" />
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-38bdf8" alt="MIT License" /></a>
+</p>
 
-You need Node.js **22.12 or newer** and a MongoDB database. You can use MongoDB installed on your computer or a MongoDB Atlas database.
+<p align="center">
+  <a href="#quick-start">Quick start</a> ·
+  <a href="#project-structure">Project structure</a> ·
+  <a href="#how-the-files-connect">How it works</a> ·
+  <a href="#make-it-your-project">Make it yours</a> ·
+  <a href="CONTRIBUTING.md">Contribute</a>
+</p>
 
-Click **Use this template → Create a new repository** on GitHub, download the ZIP, or clone this repo:
+## A starting point you can understand
+
+Use this repo when you want an Express and MongoDB project with a clear place for each file. It includes the server setup, database connection, shared error handling, and an auth module you can build on.
+
+**Auth is a starter scaffold.** Register, login, forgot-password, logout, and reset-password routes return **501 Not Implemented** until you add their logic. This repo does not create users, authenticate requests, or send password-reset emails yet.
+
+- **Simple setup:** four dependencies — Express, Mongoose, dotenv, and CORS.
+- **Shared code:** database settings, DTOs, middleware, and helpers go in `common`.
+- **Feature code:** each feature gets its own folder in `module`.
+- **Easy to reuse:** use the template, change the database name, and start coding.
+
+## Quick start
+
+You need **Node.js 22.12 or newer** and a MongoDB database, running locally or on MongoDB Atlas.
+
+### 1. Get the starter
+
+Click **[Use this template](https://github.com/real-VrajSoni/express-mongo-start/generate)** to create your own repo, or clone this one:
 
 ```sh
 git clone https://github.com/real-VrajSoni/express-mongo-start.git
 cd express-mongo-start
 npm install
+```
+
+### 2. Add your database settings
+
+```sh
 cp .env.example .env
 ```
 
-On Windows, you can copy `.env.example` and rename the copy to `.env` using your file explorer.
-
-Open `.env` and add your MongoDB connection string:
+On Windows, copy `.env.example` and rename the copy to `.env` in your file explorer.
 
 ```env
 PORT=3000
 MONGODB_URI=mongodb://127.0.0.1:27017/my_project
 ```
 
-The example above uses a local MongoDB server, which must be running. For Atlas, replace `MONGODB_URI` with your Atlas connection string, including the database name. Keep your `.env` file private; it is excluded from Git.
+The example uses a local MongoDB server, which must be running. For Atlas, replace `MONGODB_URI` with your Atlas connection string, including your database name. Keep `.env` private; Git ignores it.
 
-Start the server:
+### 3. Run it
 
 ```sh
 npm run dev
 ```
 
-Open **http://localhost:3000**. You should see `Welcome to your API!`. The server restarts when you save a JavaScript file. Use `npm start` to run it without watching files.
+Open **http://localhost:3000** to see `Welcome to your API!`. JavaScript changes restart the server automatically. Use `npm start` to run without watching files. Restart the server after changing `.env`.
 
-## Where things go
+## Project structure
 
 ```text
-express-mongo-start/
-├── src/
+src/
+├── common/
 │   ├── config/
-│   │   └── db.js          # Connect to MongoDB
-│   ├── models/
-│   │   └── Item.js        # Describe your data
-│   ├── routes/
-│   │   └── itemRoutes.js  # Read and save data
-│   └── app.js             # Set up Express and connect routes
-├── docs/
-│   └── code-preview.png   # README image
-├── .env.example           # Copy this to .env
-├── .gitignore
-├── package.json
-├── package-lock.json
-├── README.md
-└── server.js              # Start the server
+│   │   └── db.js
+│   ├── dto/
+│   │   └── README.md
+│   ├── middleware/
+│   │   └── errorHandler.js
+│   └── utils/
+│       └── README.md
+├── module/
+│   └── auth/
+│       ├── Dto/
+│       │   ├── register.dto.js
+│       │   ├── login.dto.js
+│       │   ├── forgot-password.dto.js
+│       │   ├── logout.dto.js
+│       │   └── reset-password.dto.js
+│       ├── controller.js
+│       ├── middleware.js
+│       ├── routes.js
+│       ├── model.js
+│       └── service.js
+└── app.js
 ```
 
-There are only **five JavaScript files**. The `Item` example has one field: `name`. Replace it with the data your project needs.
+`server.js` is in the project root. It reads `.env`, connects to MongoDB, and starts Express. The small README files preserve the shared folders on GitHub and explain what belongs there.
 
-## How a request works
+| Location | What belongs here |
+| --- | --- |
+| `common/config` | Settings shared by the app, such as the database connection. |
+| `common/dto` | DTOs used by more than one feature. |
+| `common/middleware` | Shared request and error handlers. |
+| `common/utils` | Small helper functions used in different places. |
+| `auth/Dto` | Functions that pick the input fields for each auth action. |
+| `auth/routes.js` | URLs and the controller functions they call. |
+| `auth/controller.js` | Read the request and send the response. |
+| `auth/service.js` | Add the steps that perform each action. |
+| `auth/model.js` | Describe the user data stored in MongoDB. |
+| `auth/middleware.js` | A place for auth-specific checks when you implement login. |
+
+**DTO** means **Data Transfer Object**. Here, a DTO is just a small function that picks fields from a request body. The DTOs do not validate input or check passwords; add those checks when you implement the service.
+
+## How the files connect
 
 ```mermaid
 flowchart LR
-    A[Frontend or Postman] --> B[Express route]
-    B --> C[Mongoose model]
-    C --> D[(MongoDB)]
+    A[Client] --> B[routes.js]
+    B --> C[controller.js]
+    C --> D[Dto: pick fields]
+    D --> E[service.js]
+    E -. add database logic .-> F[model.js]
+    F -.-> G[(MongoDB)]
 ```
 
-For example, your frontend sends a name to `POST /api/items`. The route uses the `Item` model to save it in MongoDB and sends the saved item back as JSON.
+For `/api/auth/register`, the route calls the controller. The controller picks `name`, `email`, and `password` using the register DTO, then passes them to the service. The service currently throws a 501 error with a message telling you where to add your code.
 
-## Example code
+![Register DTO and controller from the starter](docs/code-preview.png)
 
-![Simple Express routes for reading and saving items](docs/code-preview.png)
+[Read the DTO](src/module/auth/Dto/register.dto.js) · [Read the controller](src/module/auth/controller.js) · [Read the service](src/module/auth/service.js)
 
-[Open the route file](src/routes/itemRoutes.js) · [Open the model file](src/models/Item.js)
+## Try a route
 
-## Try the example
-
-| Method | URL | What it does |
+| Method | Route | Current behavior |
 | --- | --- | --- |
-| GET | `/` | Check that the API is running |
-| GET | `/api/items` | Get all items |
-| POST | `/api/items` | Create an item |
+| GET | `/` | Welcome message |
+| POST | `/api/auth/register` | 501 placeholder |
+| POST | `/api/auth/login` | 501 placeholder |
+| POST | `/api/auth/forgot-password` | 501 placeholder |
+| POST | `/api/auth/logout` | 501 placeholder |
+| POST | `/api/auth/reset-password` | 501 placeholder |
 
-In Postman, send a **POST** request to `http://localhost:3000/api/items`. Select **Body → raw → JSON** and enter:
+```sh
+curl -i -X POST http://localhost:3000/api/auth/register \
+  -H 'Content-Type: application/json' \
+  -d '{"name":"Alex","email":"alex@example.com","password":"example-password"}'
+```
+
+The response is deliberately clear:
 
 ```json
 {
-  "name": "My first item"
+  "message": "Register is a starter placeholder. Add your code in service.js."
 }
 ```
 
-You can also use your terminal:
-
-```sh
-curl -X POST http://localhost:3000/api/items \
-  -H 'Content-Type: application/json' \
-  -d '{"name":"My first item"}'
-
-curl http://localhost:3000/api/items
-```
-
-A missing or empty `name` returns a `400` error. A successful create returns `201` and the saved item. Reading items returns a JSON array.
-
 ## Make it your project
 
-1. Change `Item.js` to describe your data, such as a product, note, or task.
-2. Add your API routes in `itemRoutes.js`, or create another route file.
-3. Connect new route files in `app.js` using `app.use()`.
-4. Change the database name in `.env` for each project.
+1. Change the database name in `.env` for your project.
+2. Start with one action in `auth/service.js`, or create a new feature such as `module/notes`.
+3. Add model fields and DTO fields as your feature needs them.
+4. Connect new routes in `app.js` with `app.use()`.
 
-The example API is public. Add login and access rules when your project needs them.
+Add code only as your project needs it. When implementing auth, hash passwords, validate input, and add real session checks. `passwordHash` is a field for a hash; the starter does not hash passwords for you. `middleware.js` is a reserved file, not an access check.
+
+## Contributing
+
+New to open source? Small improvements are welcome: clearer comments, corrected docs, or focused fixes that make the starter easier to learn.
+
+See **[CONTRIBUTING.md](CONTRIBUTING.md)** for a short guide. You can also **[open an issue](https://github.com/real-VrajSoni/express-mongo-start/issues/new)** with a question or suggestion.
+
+## License
+
+[MIT](LICENSE) — you can use and adapt this starter for your own projects. Keep the license notice when you redistribute it.

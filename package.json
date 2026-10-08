@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "A small Express and MongoDB starter for beginners",
+  "description": "Beginner-friendly Express and MongoDB starter with a simple auth scaffold",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -16,5 +16,6 @@
     "dotenv": "^17.2.0",
     "express": "^5.2.1",
     "mongoose": "^9.11.1"
-  }
+  },
+  "license": "MIT"
 }
