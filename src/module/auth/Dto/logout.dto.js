@@ -1,4 +1,4 @@
-// The auth middleware supplies the user and bearer token.
-export default function logoutDto(user, token) {
-  return { userId: user._id, token };
+// Logout usually reads a session or cookie, rather than a JSON body.
+export default function logoutDto() {
+  return {};
 }

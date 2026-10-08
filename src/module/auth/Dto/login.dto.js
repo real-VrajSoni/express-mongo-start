@@ -1,9 +1,6 @@
-import { jsonBody, emailField, passwordField } from '../../../common/dto/validation.js';
-
-export default function loginDto(body) {
-  const data = jsonBody(body);
+export default function loginDto(body = {}) {
   return {
-    email: emailField(data.email),
-    password: passwordField(data.password),
+    email: body.email,
+    password: body.password,
   };
 }

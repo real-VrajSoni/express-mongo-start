@@ -3,26 +3,19 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Beginner-friendly Express and MongoDB starter with working local authentication",
+  "description": "Beginner-friendly Express and MongoDB starter with a simple auth scaffold",
   "engines": {
     "node": ">=22.12.0"
   },
   "scripts": {
     "dev": "node --watch server.js",
-    "start": "node server.js",
-    "db": "node src/common/config/localMongo.js",
-    "test": "node --test"
+    "start": "node server.js"
   },
   "dependencies": {
-    "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
     "dotenv": "^17.2.0",
     "express": "^5.2.1",
-    "express-rate-limit": "^8.7.1",
     "mongoose": "^9.11.1"
   },
-  "license": "MIT",
-  "devDependencies": {
-    "mongodb-memory-server": "^11.3.0"
-  }
+  "license": "MIT"
 }

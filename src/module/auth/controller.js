@@ -4,34 +4,35 @@ import loginDto from './Dto/login.dto.js';
 import forgotPasswordDto from './Dto/forgot-password.dto.js';
 import logoutDto from './Dto/logout.dto.js';
 import resetPasswordDto from './Dto/reset-password.dto.js';
-import userDto from '../../common/dto/user.dto.js';
 import sendResponse from '../../common/utils/ApiResponse.js';
 
+// Controllers read the request and send the response.
 export async function register(req, res) {
-  const result = await authService.register(registerDto(req.body));
+  const data = registerDto(req.body);
+  const result = await authService.register(data);
   return sendResponse(res, 201, 'Account created', result);
 }
 
 export async function login(req, res) {
-  const result = await authService.login(loginDto(req.body));
+  const data = loginDto(req.body);
+  const result = await authService.login(data);
   return sendResponse(res, 200, 'Logged in', result);
 }
 
 export async function forgotPassword(req, res) {
-  await authService.forgotPassword(forgotPasswordDto(req.body));
-  return sendResponse(res, 200, 'If an account exists, a reset token has been sent.');
+  const data = forgotPasswordDto(req.body);
+  const result = await authService.forgotPassword(data);
+  return sendResponse(res, 200, 'Password reset requested', result);
 }
 
 export async function logout(req, res) {
-  await authService.logout(logoutDto(req.user, req.authToken));
-  return sendResponse(res, 200, 'Logged out');
+  const data = logoutDto();
+  const result = await authService.logout(data);
+  return sendResponse(res, 200, 'Logged out', result);
 }
 
 export async function resetPassword(req, res) {
-  await authService.resetPassword(resetPasswordDto(req.body));
-  return sendResponse(res, 200, 'Password reset. Please log in again.');
-}
-
-export function me(req, res) {
-  return sendResponse(res, 200, 'Your account', { user: userDto(req.user) });
+  const data = resetPasswordDto(req.body);
+  const result = await authService.resetPassword(data);
+  return sendResponse(res, 200, 'Password reset', result);
 }
