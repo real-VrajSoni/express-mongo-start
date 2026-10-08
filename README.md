@@ -1,176 +1,115 @@
-# 🌱 Mongo Sprout
+# Express Mongo Start
 
-**A modular Express + MongoDB boilerplate. Plant your next API here.**
+A small JavaScript backend starter for beginners learning fullstack web development. Copy it, connect MongoDB, and start building your project.
 
-![CI](https://github.com/real-VrajSoni/mongo-sprout/actions/workflows/ci.yml/badge.svg)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES_modules-f7df1e?logo=javascript&logoColor=black)
-![Express](https://img.shields.io/badge/Express-5-000000?logo=express)
-![Mongoose](https://img.shields.io/badge/Mongoose-9-880000?logo=mongoose)
-![MongoDB](https://img.shields.io/badge/MongoDB-8-47a248?logo=mongodb&logoColor=white)
+It uses **Express** for API routes, **Mongoose** to work with MongoDB, **dotenv** for settings, and **CORS** so your frontend can call the API.
 
-[Quick start](#run-locally) · [Architecture](#architecture) · [Endpoints](#endpoints) · [Add a feature](#add-a-feature)
+## Start here
 
-## What's included
+You need Node.js **22.12 or newer** and a MongoDB database. You can use MongoDB installed on your computer or a MongoDB Atlas database.
 
-- Feature modules with routes, controllers, services, models, and validation.
-- Users CRUD example with pagination and a unique email index.
-- Shared JSON error responses and guarded request bodies.
-- MongoDB through Docker Compose or your own connection string.
-- Health/readiness endpoints and graceful server shutdown.
-- Seven automated HTTP/input/schema checks and GitHub Actions CI.
-
-## Stack
-
-JavaScript (ES modules), Express 5, MongoDB, and Mongoose 9. Requires Node.js 22.12+ and npm. Docker is optional if you already have MongoDB or an Atlas connection string.
-
-Mongoose is an ODM (Object Document Mapper) for MongoDB.
-
-## Structure
-
-```text
-mongo-sprout/
-├── src/
-│   ├── common/
-│   │   ├── config/
-│   │   │   ├── database.js
-│   │   │   └── env.js
-│   │   ├── middleware/
-│   │   │   ├── errorHandler.js
-│   │   │   └── notFound.js
-│   │   └── utils/
-│   │       └── AppError.js
-│   ├── modules/
-│   │   └── users/
-│   │       ├── user.controller.js
-│   │       ├── user.model.js
-│   │       ├── user.routes.js
-│   │       ├── user.service.js
-│   │       └── user.validation.js
-│   └── app.js
-├── docs/images/              # README code previews
-├── .github/workflows/ci.yml  # Node.js 22 / 24 checks
-├── test/
-│   └── app.test.js
-├── .gitignore
-├── docker-compose.yml
-├── env.example
-├── package-lock.json
-├── package.json
-├── README.md
-└── server.js
-```
-
-`app.js` configures middleware and routes. `server.js` connects to MongoDB before accepting requests and closes connections on shutdown. `common` holds shared infrastructure. Each feature in `modules` owns its routes, controllers, services, schema, and request validation.
-
-## Architecture
-
-```mermaid
-flowchart TD
-    Client[HTTP client] --> Router[Express router]
-    Router --> Validation[Request validation]
-    Validation --> Controller[Controller: HTTP response]
-    Controller --> Service[Service: data operations]
-    Service --> Model[Mongoose model: schema validation]
-    Model --> DB[(MongoDB)]
-    DB --> Model
-    Model --> Service
-    Service --> Controller
-    Controller --> Response[JSON response]
-    Validation -. invalid input .-> Errors[Shared error handler]
-    Controller -. async rejection .-> Errors
-    Errors --> ErrorResponse[JSON error response]
-
-    classDef api fill:#dbeafe,stroke:#2563eb,color:#172554;
-    classDef data fill:#dcfce7,stroke:#16a34a,color:#14532d;
-    classDef error fill:#fee2e2,stroke:#dc2626,color:#7f1d1d;
-    class Router,Validation,Controller,Response api;
-    class Service,Model,DB data;
-    class Errors,ErrorResponse error;
-```
-
-Routes choose the handler, controllers shape the response, services perform data operations, and models define stored documents. Express forwards rejected async handlers to the shared error middleware.
-
-## Code previews
-
-The images below show the actual routes and schema included in this repo. The editable source is linked below each preview.
-
-![Express users router with validated POST and PATCH routes](docs/images/routes.png)
-
-[View route source](src/modules/users/user.routes.js)
-
-![Mongoose user schema with name validation and a unique normalized email](docs/images/model.png)
-
-[View model source](src/modules/users/user.model.js)
-
-## Run locally
-
-Clone the repository, then install and start it:
+Click **Use this template → Create a new repository** on GitHub, download the ZIP, or clone this repo:
 
 ```sh
-git clone https://github.com/real-VrajSoni/mongo-sprout.git
-cd mongo-sprout
-npm ci
-cp env.example .env
-docker compose up -d
+git clone https://github.com/real-VrajSoni/express-mongo-start.git
+cd express-mongo-start
+npm install
+cp .env.example .env
+```
+
+On Windows, you can copy `.env.example` and rename the copy to `.env` using your file explorer.
+
+Open `.env` and add your MongoDB connection string:
+
+```env
+PORT=3000
+MONGODB_URI=mongodb://127.0.0.1:27017/my_project
+```
+
+The example above uses a local MongoDB server, which must be running. For Atlas, replace `MONGODB_URI` with your Atlas connection string, including the database name. Keep your `.env` file private; it is excluded from Git.
+
+Start the server:
+
+```sh
 npm run dev
 ```
 
-The API runs at `http://localhost:3000`. Compose runs MongoDB only; run Node.js on your host. This local database has no authentication and is bound to localhost. For Atlas or another database, skip Docker and replace `MONGODB_URI` in `.env` with your connection string.
+Open **http://localhost:3000**. You should see `Welcome to your API!`. The server restarts when you save a JavaScript file. Use `npm start` to run it without watching files.
 
-```sh
-npm start          # run without file watching
-npm test           # HTTP/input/schema checks; no database required
-docker compose down  # stop MongoDB; preserve stored data
+## Where things go
+
+```text
+express-mongo-start/
+├── src/
+│   ├── config/
+│   │   └── db.js          # Connect to MongoDB
+│   ├── models/
+│   │   └── Item.js        # Describe your data
+│   ├── routes/
+│   │   └── itemRoutes.js  # Read and save data
+│   └── app.js             # Set up Express and connect routes
+├── docs/
+│   └── code-preview.png   # README image
+├── .env.example           # Copy this to .env
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── README.md
+└── server.js              # Start the server
 ```
 
-## Endpoints
+There are only **five JavaScript files**. The `Item` example has one field: `name`. Replace it with the data your project needs.
 
-| Method | URL | Purpose |
+## How a request works
+
+```mermaid
+flowchart LR
+    A[Frontend or Postman] --> B[Express route]
+    B --> C[Mongoose model]
+    C --> D[(MongoDB)]
+```
+
+For example, your frontend sends a name to `POST /api/items`. The route uses the `Item` model to save it in MongoDB and sends the saved item back as JSON.
+
+## Example code
+
+![Simple Express routes for reading and saving items](docs/code-preview.png)
+
+[Open the route file](src/routes/itemRoutes.js) · [Open the model file](src/models/Item.js)
+
+## Try the example
+
+| Method | URL | What it does |
 | --- | --- | --- |
-| GET | `/health` | API liveness |
-| GET | `/ready` | Database connection readiness |
-| POST | `/api/v1/users` | Create user |
-| GET | `/api/v1/users?page=1&limit=10` | List users (limit: 1–100) |
-| GET | `/api/v1/users/:id` | Read user |
-| PATCH | `/api/v1/users/:id` | Update name and/or email |
-| DELETE | `/api/v1/users/:id` | Delete user (204, empty response) |
+| GET | `/` | Check that the API is running |
+| GET | `/api/items` | Get all items |
+| POST | `/api/items` | Create an item |
 
-Create a user:
+In Postman, send a **POST** request to `http://localhost:3000/api/items`. Select **Body → raw → JSON** and enter:
+
+```json
+{
+  "name": "My first item"
+}
+```
+
+You can also use your terminal:
 
 ```sh
-curl -i -X POST http://localhost:3000/api/v1/users \
+curl -X POST http://localhost:3000/api/items \
   -H 'Content-Type: application/json' \
-  -d '{"name":"Alex Doe","email":"alex@example.com"}'
+  -d '{"name":"My first item"}'
+
+curl http://localhost:3000/api/items
 ```
 
-Copy the `_id` from the response into `USER_ID`:
+A missing or empty `name` returns a `400` error. A successful create returns `201` and the saved item. Reading items returns a JSON array.
 
-```sh
-USER_ID='paste-the-user-id-here'
-curl 'http://localhost:3000/api/v1/users?page=1&limit=10'
-curl "http://localhost:3000/api/v1/users/$USER_ID"
-curl -X PATCH "http://localhost:3000/api/v1/users/$USER_ID" \
-  -H 'Content-Type: application/json' \
-  -d '{"name":"Alex Smith"}'
-curl -i -X DELETE "http://localhost:3000/api/v1/users/$USER_ID"
-```
+## Make it your project
 
-Success responses use `{ "success": true, "data": ... }`. Errors use `{ "success": false, "message": "..." }`. Invalid input returns 400; missing resources return 404; duplicate emails return 409. Names and emails are trimmed, and emails are lowercased. Creating a user requires both fields; PATCH requires at least one. Other fields and MongoDB update operators are rejected.
+1. Change `Item.js` to describe your data, such as a product, note, or task.
+2. Add your API routes in `itemRoutes.js`, or create another route file.
+3. Connect new route files in `app.js` using `app.use()`.
+4. Change the database name in `.env` for each project.
 
-## Checks
-
-```sh
-npm test
-```
-
-The tests cover health/readiness responses, missing routes, malformed IDs and JSON, rejected fields, update-operator injection, pagination limits, and Mongoose normalization/validation. They do not require a database or cover persisted CRUD. GitHub Actions runs them on Node.js 22 and 24.
-
-## Add a feature
-
-Create another folder under `src/modules`, define its model/service/controller/routes, and mount the router in `src/app.js`. Shared middleware belongs under `src/common`.
-
-This starter includes no authentication: all users endpoints are public. Add your application's authentication and authorization before using it for private data. Add CORS middleware with an explicit allowed frontend origin when a browser client runs on a different origin.
-
-Express 5 forwards errors from async route handlers to the error middleware, so controllers need no async wrapper. Mongoose update validation is enabled explicitly with `runValidators: true`.
-
-References: [Express error handling](https://expressjs.com/en/5x/guide/error-handling/), [Mongoose validation](https://mongoosejs.com/docs/validation.html).
+The example API is public. Add login and access rules when your project needs them.
