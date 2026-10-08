@@ -1,18 +1,18 @@
 <p align="center">
-  <img src="docs/hero.svg" alt="Express Mongo Start — modular Express 5 and MongoDB backend starter" width="100%" />
+  <img src="docs/hero.svg" alt="RESTful API Starter — modular Express 5 and MongoDB backend starter" width="100%" />
 </p>
 
 <p align="center">
-  <a href="https://github.com/real-VrajSoni/express-mongo-start/generate"><strong>⚡ Use this template</strong></a>
+  <a href="https://github.com/real-VrajSoni/restful-api-starter/generate"><strong>⚡ Use this template</strong></a>
   ·
-  <a href="https://github.com/real-VrajSoni/express-mongo-start"><strong>⭐ Star on GitHub</strong></a>
+  <a href="https://github.com/real-VrajSoni/restful-api-starter"><strong>⭐ Star on GitHub</strong></a>
   ·
-  <a href="https://github.com/real-VrajSoni/express-mongo-start/issues"><strong>💬 Ask a question</strong></a>
+  <a href="https://github.com/real-VrajSoni/restful-api-starter/issues"><strong>💬 Ask a question</strong></a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/stars/real-VrajSoni/express-mongo-start?style=for-the-badge&logo=github&label=stars" alt="GitHub stars" />
-  <img src="https://img.shields.io/github/forks/real-VrajSoni/express-mongo-start?style=for-the-badge&logo=github&label=forks" alt="GitHub forks" />
+  <img src="https://img.shields.io/github/stars/real-VrajSoni/restful-api-starter?style=for-the-badge&logo=github&label=stars" alt="GitHub stars" />
+  <img src="https://img.shields.io/github/forks/real-VrajSoni/restful-api-starter?style=for-the-badge&logo=github&label=forks" alt="GitHub forks" />
   <img src="https://img.shields.io/badge/Node.js-22.12%2B-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js 22.12 or newer" />
   <img src="https://img.shields.io/badge/Express-5-111827?style=for-the-badge&logo=express" alt="Express 5" />
   <img src="https://img.shields.io/badge/MongoDB-Mongoose-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB and Mongoose" />
@@ -23,7 +23,7 @@
 
 # Build the API. Skip the boilerplate.
 
-**Express Mongo Start** is a small, opinionated starting point for JavaScript backends using **Express 5 + MongoDB**.
+**RESTful API Starter** is a small, opinionated starting point for JavaScript backends using **Express 5 + MongoDB**.
 
 It gives you a clear place for each responsibility:
 
@@ -65,7 +65,7 @@ This starter makes those decisions once, so your next project can start with the
 ## Architecture
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/real-VrajSoni/express-mongo-start/c9d1191733e062ab452c52a8b53fb91760081e1b/docs/architecture.svg" alt="Express Mongo Start request flow and project architecture" width="100%" />
+  <img src="https://raw.githubusercontent.com/real-VrajSoni/restful-api-starter/c9d1191733e062ab452c52a8b53fb91760081e1b/docs/architecture.svg" alt="RESTful API Starter request flow and project architecture" width="100%" />
 </p>
 
 The important idea is **separation of responsibility**, not adding layers for the sake of it.
@@ -75,7 +75,7 @@ A request enters through a route, the controller coordinates it, a DTO picks the
 ## Project structure
 
 ```text
-express-mongo-start/
+restful-api-starter/
 ├── src/
 │   ├── common/
 │   │   ├── config/
@@ -128,14 +128,14 @@ That keeps feature code together while preventing shared helpers from being copi
 ### 1. Clone
 
 ```bash
-git clone https://github.com/real-VrajSoni/express-mongo-start.git
-cd express-mongo-start
+git clone https://github.com/real-VrajSoni/restful-api-starter.git
+cd restful-api-starter
 npm install
 ```
 
 Or create your own repository directly:
 
-**[⚡ Use this template](https://github.com/real-VrajSoni/express-mongo-start/generate)**
+**[⚡ Use this template](https://github.com/real-VrajSoni/restful-api-starter/generate)**
 
 ### 2. Configure your environment
 
@@ -314,7 +314,7 @@ MIT © [Vraj Soni](https://github.com/real-VrajSoni)
   <br />
   <sub>Found it useful? A ⭐ helps more developers discover it.</sub>
   <br /><br />
-  <a href="https://github.com/real-VrajSoni/express-mongo-start">
+  <a href="https://github.com/real-VrajSoni/restful-api-starter">
     <img src="https://img.shields.io/badge/⭐_Star_this_repo-18181B?style=for-the-badge&logo=github" alt="Star this repository" />
   </a>
 </p>
