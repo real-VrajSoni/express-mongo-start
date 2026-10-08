@@ -1,13 +1,13 @@
 import mongoose from 'mongoose';
 
-// Change these fields to match the user data your project needs.
 const userSchema = new mongoose.Schema({
-  name: { type: String, required: true, trim: true },
-  email: { type: String, required: true, trim: true, lowercase: true },
-  // Store a password hash, never the plain password.
-  passwordHash: { type: String, required: true },
-});
+  name: { type: String, required: true, trim: true, maxlength: 100 },
+  email: { type: String, required: true, unique: true, trim: true, lowercase: true },
+  passwordHash: { type: String, required: true, select: false },
+  sessionTokenHash: { type: String, select: false },
+  sessionExpiresAt: { type: Date, select: false },
+  resetTokenHash: { type: String, select: false },
+  resetTokenExpiresAt: { type: Date, select: false },
+}, { timestamps: true });
 
-const User = mongoose.model('User', userSchema);
-
-export default User;
+export default mongoose.model('User', userSchema);

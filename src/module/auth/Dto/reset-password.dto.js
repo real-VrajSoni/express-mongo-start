@@ -1,6 +1,9 @@
-export default function resetPasswordDto(body = {}) {
+import { jsonBody, tokenField, passwordField } from '../../../common/dto/validation.js';
+
+export default function resetPasswordDto(body) {
+  const data = jsonBody(body);
   return {
-    token: body.token,
-    password: body.password,
+    token: tokenField(data.token),
+    password: passwordField(data.password),
   };
 }

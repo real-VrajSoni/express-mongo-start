@@ -1,8 +1,10 @@
-// Pick the fields that the register action needs.
-export default function registerDto(body = {}) {
+import { jsonBody, requiredString, emailField, passwordField } from '../../../common/dto/validation.js';
+
+export default function registerDto(body) {
+  const data = jsonBody(body);
   return {
-    name: body.name,
-    email: body.email,
-    password: body.password,
+    name: requiredString(data.name, 'name'),
+    email: emailField(data.email),
+    password: passwordField(data.password),
   };
 }

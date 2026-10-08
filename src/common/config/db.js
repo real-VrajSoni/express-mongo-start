@@ -1,12 +1,7 @@
 import mongoose from 'mongoose';
+import { env } from './env.js';
 
-async function connectDB() {
-  if (!process.env.MONGODB_URI) {
-    throw new Error('Add MONGODB_URI to your .env file');
-  }
-
-  await mongoose.connect(process.env.MONGODB_URI);
+export default async function connectDB() {
+  await mongoose.connect(env.mongodbUri, { serverSelectionTimeoutMS: 5000 });
   console.log('MongoDB connected');
 }
-
-export default connectDB;
