@@ -1,0 +1,71 @@
+<svg width="1600" height="520" viewBox="0 0 1600 520" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07121d"/><stop offset=".55" stop-color="#0b1927"/><stop offset="1" stop-color="#10182a"/></linearGradient>
+  <radialGradient id="g1" cx=".82" cy=".28" r=".55"><stop stop-color="#35f29d" stop-opacity=".22"/><stop offset="1" stop-color="#35f29d" stop-opacity="0"/></radialGradient>
+  <radialGradient id="g2" cx=".92" cy=".8" r=".6"><stop stop-color="#6b7cff" stop-opacity=".18"/><stop offset="1" stop-color="#6b7cff" stop-opacity="0"/></radialGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="22" stdDeviation="26" flood-color="#000" flood-opacity=".42"/></filter>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#58f2ac"/><stop offset="1" stop-color="#7aa2ff"/></linearGradient>
+</defs>
+
+<rect width="1600" height="520" rx="28" fill="url(#bg)"/>
+<rect width="1600" height="520" rx="28" fill="url(#g1)"/>
+<rect width="1600" height="520" rx="28" fill="url(#g2)"/>
+
+<g font-family="Inter,Segoe UI,Arial,sans-serif">
+  <rect x="64" y="54" width="310" height="38" rx="19" fill="#102133" stroke="#29445b"/>
+  <text x="82" y="79" font-size="15" font-weight="700" fill="#b7cad8">⚡ MODULAR BACKEND STARTER</text>
+
+  <text x="64" y="170" font-size="70" font-weight="800" fill="#f5f8fb">Express</text>
+  <text x="64" y="245" font-size="70" font-weight="800" fill="url(#accent)">Mongo</text>
+  <text x="319" y="245" font-size="70" font-weight="800" fill="#f5f8fb"> Start</text>
+
+  <text x="67" y="302" font-size="23" fill="#c9d5df">A clean Express 5 + MongoDB foundation</text>
+  <text x="67" y="334" font-size="23" fill="#c9d5df">without the framework-sized boilerplate.</text>
+
+  <g font-size="14" font-weight="700">
+    <rect x="64" y="372" width="108" height="36" rx="18" fill="#102133" stroke="#29445b"/><text x="84" y="395" fill="#72eeb0">Express 5</text>
+    <rect x="182" y="372" width="104" height="36" rx="18" fill="#102133" stroke="#29445b"/><text x="205" y="395" fill="#8bb0ff">MongoDB</text>
+    <rect x="296" y="372" width="112" height="36" rx="18" fill="#102133" stroke="#29445b"/><text x="316" y="395" fill="#cb9dff">Mongoose</text>
+    <rect x="418" y="372" width="118" height="36" rx="18" fill="#102133" stroke="#29445b"/><text x="438" y="395" fill="#b7cad8">ES Modules</text>
+  </g>
+
+  <rect x="64" y="437" width="200" height="48" rx="14" fill="#58f2ac"/>
+  <text x="91" y="468" font-size="17" font-weight="800" fill="#06150f">Use this template →</text>
+  <rect x="279" y="437" width="192" height="48" rx="14" fill="#0f1b2a" stroke="#48617a"/>
+  <text x="306" y="468" font-size="17" font-weight="800" fill="#edf3f7">★ Star on GitHub</text>
+
+  <g filter="url(#shadow)">
+    <rect x="670" y="62" width="858" height="380" rx="20" fill="#0a121c" stroke="#29445b" stroke-width="2"/>
+  </g>
+  <rect x="670" y="62" width="858" height="48" rx="20" fill="#111d2b"/>
+  <circle cx="700" cy="86" r="7" fill="#ff6b6b"/><circle cx="722" cy="86" r="7" fill="#f5c451"/><circle cx="744" cy="86" r="7" fill="#56d88a"/>
+  <text x="776" y="92" font-size="16" fill="#a9bdca">express-mongo-start • architecture</text>
+
+  <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15">
+    <text x="703" y="142" fill="#76d9ff">src/</text>
+    <text x="728" y="170" fill="#c6a8ff">common/</text>
+    <text x="762" y="198" fill="#a7b9c8">config/db.js</text>
+    <text x="762" y="224" fill="#a7b9c8">middleware/errorHandler.js</text>
+    <text x="762" y="250" fill="#a7b9c8">utils/ApiError.js</text>
+    <text x="762" y="276" fill="#a7b9c8">utils/ApiResponse.js</text>
+    <text x="728" y="308" fill="#72eeb0">module/auth/</text>
+    <text x="762" y="336" fill="#a7b9c8">routes.js</text>
+    <text x="762" y="362" fill="#a7b9c8">controller.js</text>
+    <text x="762" y="388" fill="#a7b9c8">service.js</text>
+    <text x="762" y="414" fill="#a7b9c8">model.js</text>
+
+    <rect x="1048" y="147" width="414" height="257" rx="16" fill="#07101a" stroke="#233b51"/>
+    <text x="1070" y="179" fill="#86a0b4">// request flow</text>
+    <text x="1070" y="214" fill="#72eeb0">Route</text><text x="1130" y="214" fill="#71869a">→</text>
+    <text x="1153" y="214" fill="#8bb0ff">Controller</text><text x="1272" y="214" fill="#71869a">→</text>
+    <text x="1295" y="214" fill="#cb9dff">DTO</text>
+    <text x="1070" y="257" fill="#71869a">                 ↓</text>
+    <text x="1070" y="291" fill="#ffbf78">Service</text><text x="1160" y="291" fill="#71869a">→</text>
+    <text x="1182" y="291" fill="#ff7fa5">Model</text><text x="1267" y="291" fill="#71869a">→</text>
+    <text x="1290" y="291" fill="#72eeb0">MongoDB</text>
+    <text x="1070" y="340" fill="#9fb1bf">Small layers.</text>
+    <text x="1182" y="340" fill="#9fb1bf">Clear responsibilities.</text>
+    <text x="1070" y="366" fill="#9fb1bf">Easy to replace.</text>
+  </g>
+</g>
+</svg>
