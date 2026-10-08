@@ -88,5 +88,4 @@
 <text x="1324" y="657" class="small" fill="#DCE8EF">server.js loads .env, connects MongoDB, starts Express</text>
 <text x="1324" y="683" class="small" fill="#DCE8EF">app.js configures middleware, routes, and error handling</text>
 <text x="1324" y="709" class="small" fill="#FFC98E">Clean flow → clear responsibilities → easy to extend</text>
-</g>
 </svg>
