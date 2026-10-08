@@ -1,121 +1,76 @@
-# Express Mongo Start
-
 <p align="center">
-  <img src="docs/banner.png" alt="Express Mongo Start" width="100%" />
+  <img src="docs/hero.svg" alt="Express Mongo Start — modular Express 5 and MongoDB backend starter" width="100%" />
 </p>
 
 <p align="center">
-  A clean, beginner-friendly Express + MongoDB backend starter built to be understood, extended, and shipped.
+  <a href="https://github.com/real-VrajSoni/express-mongo-start/generate"><strong>⚡ Use this template</strong></a>
+  ·
+  <a href="https://github.com/real-VrajSoni/express-mongo-start"><strong>⭐ Star on GitHub</strong></a>
+  ·
+  <a href="https://github.com/real-VrajSoni/express-mongo-start/issues"><strong>💬 Ask a question</strong></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/real-VrajSoni/express-mongo-start"><img src="https://img.shields.io/github/stars/real-VrajSoni/express-mongo-start?style=flat&logo=github" alt="GitHub stars" /></a>
-  <a href="https://github.com/real-VrajSoni/express-mongo-start/network/members"><img src="https://img.shields.io/github/forks/real-VrajSoni/express-mongo-start?style=flat&logo=github" alt="GitHub forks" /></a>
-  <img src="https://img.shields.io/badge/Node.js-22.12%2B-339933?logo=node.js&logoColor=white" alt="Node.js 22.12 or newer" />
-  <img src="https://img.shields.io/badge/Express-5-black?logo=express" alt="Express 5" />
-  <img src="https://img.shields.io/badge/MongoDB-Mongoose-47A248?logo=mongodb&logoColor=white" alt="MongoDB with Mongoose" />
-  <img src="https://img.shields.io/badge/ESM-native-F7DF1E?logo=javascript&logoColor=black" alt="JavaScript ES modules" />
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-38bdf8" alt="MIT license" /></a>
-</p>
-
-<p align="center">
-  <a href="#why-this-starter">Why this starter</a> ·
-  <a href="#quick-start">Quick start</a> ·
-  <a href="#project-structure">Structure</a> ·
-  <a href="#api">API</a> ·
-  <a href="#build-on-top-of-it">Build on top</a>
+  <img src="https://img.shields.io/github/stars/real-VrajSoni/express-mongo-start?style=for-the-badge&logo=github&label=stars" alt="GitHub stars" />
+  <img src="https://img.shields.io/github/forks/real-VrajSoni/express-mongo-start?style=for-the-badge&logo=github&label=forks" alt="GitHub forks" />
+  <img src="https://img.shields.io/badge/Node.js-22.12%2B-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js 22.12 or newer" />
+  <img src="https://img.shields.io/badge/Express-5-111827?style=for-the-badge&logo=express" alt="Express 5" />
+  <img src="https://img.shields.io/badge/MongoDB-Mongoose-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB and Mongoose" />
+  <img src="https://img.shields.io/badge/License-MIT-7C3AED?style=for-the-badge" alt="MIT license" />
 </p>
 
 ---
 
-## Why this starter
+# Build the API. Skip the boilerplate.
 
-Most backend tutorials become hard to maintain once the first few routes are working.
+**Express Mongo Start** is a small, opinionated starting point for JavaScript backends using **Express 5 + MongoDB**.
 
-**Express Mongo Start** keeps the starting point deliberately small:
+It gives you a clear place for each responsibility:
 
-- **Feature-first folders** so related code stays together.
-- **Shared utilities** for predictable API responses and errors.
-- **MongoDB connection setup** already wired into server startup.
-- **Auth scaffold** with routes, DTOs, controllers, services, model, and middleware separated by responsibility.
-- **No fake functionality** — auth service methods explicitly return `501 Not Implemented` until you add the real logic.
+`route → controller → DTO → service → model → database`
 
-> This is a **starter**, not a finished authentication system.
+No giant framework. No mysterious folder dump. No pretend-to-be-production authentication.
 
-That distinction is intentional. You get the structure without inheriting a pile of unexplained code.
+Just a backend foundation you can understand and make your own.
 
-## Tech stack
+## Why this exists
 
-| Tool | Purpose |
+Starting an API from an empty folder is rarely the interesting part.
+
+You still need to decide:
+
+- where database configuration belongs
+- where shared middleware lives
+- how routes connect to controllers
+- where business logic should go
+- where MongoDB models belong
+- how successful and failed responses should look
+
+This starter makes those decisions once, so your next project can start with the part that actually matters: **building the product.**
+
+## What you get
+
+| | Included |
 | --- | --- |
-| **Node.js 22.12+** | Runtime |
-| **Express 5** | HTTP server and routing |
-| **MongoDB** | Database |
-| **Mongoose 9** | MongoDB ODM |
-| **dotenv** | Environment configuration |
-| **CORS** | Cross-origin request handling |
-| **ES Modules** | Native JavaScript module system |
+| 🧩 | Feature-oriented `src/module/` structure |
+| 🧱 | Shared `src/common/` layer |
+| 🍃 | MongoDB connection with Mongoose |
+| 🛣️ | Express route → controller flow |
+| 📦 | Lightweight DTO pattern for request input |
+| ✅ | Consistent `success / message / data` responses |
+| 🧯 | Shared HTTP error handling |
+| 🔐 | Authentication scaffold ready to implement |
+| ⚡ | Node's native watch mode for development |
 
-## Quick start
+## Architecture
 
-### 1. Create your project
+<p align="center">
+  <img src="docs/architecture.svg" alt="Express Mongo Start request flow and project architecture" width="100%" />
+</p>
 
-You can use this repository as a template:
+The important idea is **separation of responsibility**, not adding layers for the sake of it.
 
-**[Use this template](https://github.com/real-VrajSoni/express-mongo-start/generate)**
-
-Or clone it:
-
-```bash
-git clone https://github.com/real-VrajSoni/express-mongo-start.git
-cd express-mongo-start
-npm install
-```
-
-### 2. Configure MongoDB
-
-Copy the example environment file:
-
-```bash
-cp .env.example .env
-```
-
-Then set your values:
-
-```env
-PORT=3000
-MONGODB_URI=mongodb://127.0.0.1:27017/my_project
-```
-
-Use a local MongoDB instance or replace the URI with your MongoDB Atlas connection string.
-
-### 3. Start the server
-
-Development:
-
-```bash
-npm run dev
-```
-
-Production-style start:
-
-```bash
-npm start
-```
-
-Then open:
-
-**http://localhost:3000**
-
-You should get:
-
-```json
-{
-  "success": true,
-  "message": "Welcome to your API!",
-  "data": null
-}
-```
+A request enters through a route, the controller coordinates it, a DTO picks the input fields, the service owns the work, and the Mongoose model handles database interaction.
 
 ## Project structure
 
@@ -155,149 +110,211 @@ express-mongo-start/
 └── LICENSE
 ```
 
-### What each layer does
+### The mental model
 
-| Layer | Responsibility |
-| --- | --- |
-| `routes.js` | Maps HTTP endpoints to controllers |
-| `controller.js` | Reads requests and sends responses |
-| `Dto/` | Picks the input fields a feature needs |
-| `service.js` | Holds the actual business logic |
-| `model.js` | Defines MongoDB data through Mongoose |
-| `middleware.js` | Home for auth-specific request checks |
-| `common/` | Shared configuration, middleware, DTOs, and utilities |
+```text
+common/
+└── things many features can reuse
 
-The separation is intentionally simple:
-
-**route → controller → DTO → service → model → database**
-
-## How a request flows
-
-```mermaid
-flowchart LR
-    A[Client] --> B[Route]
-    B --> C[Controller]
-    C --> D[DTO]
-    D --> E[Service]
-    E --> F[Model]
-    F --> G[(MongoDB)]
-    C --> H[ApiResponse]
-    E --> I[ApiError]
-    I --> J[Error Handler]
+module/
+└── auth/
+    └── things that belong to authentication
 ```
 
-For the current auth scaffold, the final database step is intentionally not implemented yet. The service throws a clear `501` error instead of pretending authentication works.
+That keeps feature code together while preventing shared helpers from being copied into every module.
 
-![Code preview](docs/code-preview.png)
+## Quick start
 
-## API
-
-### Welcome endpoint
-
-| Method | Endpoint | Current result |
-| --- | --- | --- |
-| `GET` | `/` | Welcome response |
-
-### Auth scaffold
-
-| Method | Endpoint | Current result |
-| --- | --- | --- |
-| `POST` | `/api/auth/register` | `501 Not Implemented` |
-| `POST` | `/api/auth/login` | `501 Not Implemented` |
-| `POST` | `/api/auth/forgot-password` | `501 Not Implemented` |
-| `POST` | `/api/auth/logout` | `501 Not Implemented` |
-| `POST` | `/api/auth/reset-password` | `501 Not Implemented` |
-
-Example:
+### 1. Clone
 
 ```bash
-curl -i -X POST http://localhost:3000/api/auth/register \
-  -H 'Content-Type: application/json' \
-  -d '{"name":"Alex","email":"alex@example.com","password":"example-password"}'
+git clone https://github.com/real-VrajSoni/express-mongo-start.git
+cd express-mongo-start
+npm install
 ```
 
-The response uses the shared response shape:
+Or create your own repository directly:
+
+**[⚡ Use this template](https://github.com/real-VrajSoni/express-mongo-start/generate)**
+
+### 2. Configure your environment
+
+```bash
+cp .env.example .env
+```
+
+Then add your MongoDB connection:
+
+```env
+PORT=3000
+MONGODB_URI=mongodb://127.0.0.1:27017/my_project
+```
+
+A MongoDB local instance or Atlas connection works.
+
+### 3. Start developing
+
+```bash
+npm run dev
+```
+
+The server starts after the MongoDB connection succeeds.
+
+Open **http://localhost:3000**.
+
+You should see:
 
 ```json
 {
-  "success": false,
-  "message": "Register is a starter placeholder. Add your code in service.js.",
+  "success": true,
+  "message": "Welcome to your API!",
   "data": null
 }
 ```
 
+For a normal start without file watching:
+
+```bash
+npm start
+```
+
+## API
+
+### Available now
+
+| Method | Endpoint | Behavior |
+| --- | --- | --- |
+| `GET` | `/` | Returns the welcome response |
+| `POST` | `/api/auth/register` | Auth scaffold → 501 |
+| `POST` | `/api/auth/login` | Auth scaffold → 501 |
+| `POST` | `/api/auth/forgot-password` | Auth scaffold → 501 |
+| `POST` | `/api/auth/logout` | Auth scaffold → 501 |
+| `POST` | `/api/auth/reset-password` | Auth scaffold → 501 |
+
+### Example request
+
+```bash
+curl -i -X POST http://localhost:3000/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Alex","email":"alex@example.com","password":"example-password"}'
+```
+
+The route is wired. The service intentionally stops with `501 Not Implemented` until you implement the authentication logic.
+
+That is a feature, not a bug: **the template never pretends unfinished security code is complete.**
+
 ## Consistent responses
 
-The starter includes a tiny response helper in [`src/common/utils/ApiResponse.js`](src/common/utils/ApiResponse.js).
+The starter gives you one small helper instead of repeating response formatting everywhere.
 
-Example:
+**`src/common/utils/ApiResponse.js`**
 
 ```js
 return sendResponse(res, 200, 'Notes loaded', { notes });
 ```
 
-Every response follows the same shape:
+Response:
 
 ```json
 {
   "success": true,
   "message": "Notes loaded",
-  "data": {}
+  "data": {
+    "notes": []
+  }
 }
 ```
 
-For errors, use [`src/common/utils/ApiError.js`](src/common/utils/ApiError.js):
+For HTTP errors:
+
+**`src/common/utils/ApiError.js`**
 
 ```js
 throw new ApiError(404, 'Note not found');
 ```
 
-This keeps HTTP error handling in one place instead of repeating it throughout controllers.
+The shared error handler turns that into the API response.
 
-## Build on top of it
+## Adding your first feature
 
-A typical next step is to replace one placeholder service with your real application logic.
+The easiest way to extend the starter is to create another module.
 
-1. Create a new module under `src/module/`, such as `notes/`.
-2. Add its routes, controller, service, model, and DTOs.
-3. Mount the routes from `src/app.js`.
-4. Add shared pieces to `src/common/` only when they are genuinely shared.
+For example:
 
-For the auth module, implement the service deliberately: validate input, hash passwords before storage, create your chosen session/token mechanism, and add the necessary authorization checks.
+```text
+src/module/notes/
+├── Dto/
+├── controller.js
+├── model.js
+├── routes.js
+└── service.js
+```
 
-The existing `passwordHash` field is intended for a **hash**, never a plaintext password.
+Then mount the routes in `src/app.js`.
 
-## What is intentionally not included
+The starter stays useful because you can add features without having to redesign the whole backend around them.
 
-This repo does **not** claim to be a production-ready auth system.
+## Authentication: intentionally unfinished
 
-It currently does not provide:
+The `auth` module is a **structure to build on**, not a production-ready identity system.
+
+The repository currently does **not** implement:
 
 - password hashing
-- token/session creation
+- sessions or token creation
 - request validation
-- authorization
-- password-reset email delivery
-- working auth persistence
+- authorization checks
+- reset-password email delivery
+- persisted authentication flows
 
-Those are extension points for the project you build on top of the starter.
+The model contains `passwordHash` specifically so that, when you implement auth, you store a hash rather than a plaintext password.
+
+## Built with
+
+| Technology | Role |
+| --- | --- |
+| **Node.js 22.12+** | Runtime |
+| **Express 5** | HTTP server and routing |
+| **MongoDB** | Database |
+| **Mongoose 9** | MongoDB ODM |
+| **dotenv** | Environment variables |
+| **CORS** | Cross-origin requests |
+| **ES Modules** | JavaScript modules |
+
+## Who is this for?
+
+**→ Developers starting a new Express API**  
+Get a sensible structure without spending an afternoon creating folders.
+
+**→ Beginners learning backend architecture**  
+The layers are explicit and small enough to trace from a request to the database.
+
+**→ SaaS / MVP builders**  
+Start from a foundation and spend your time on the feature that makes your product different.
+
+**→ Anyone tired of over-engineered starters**  
+There is no 200-file architecture hiding behind a “simple starter” label.
 
 ## Contributing
 
-Improvements are welcome, especially changes that make the starter easier to understand without making it unnecessarily complicated.
+Good contributions make this starter **clearer, not heavier**.
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the contribution guidelines.
+Documentation improvements, focused fixes, and changes that keep the structure approachable are welcome.
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
 
 ## License
 
-Released under the [MIT License](LICENSE).
+MIT © [Vraj Soni](https://github.com/real-VrajSoni)
 
 ---
 
 <p align="center">
-  Built to be a starting point, not another framework-sized tutorial.
-</p>
-
-<p align="center">
-  <a href="https://github.com/real-VrajSoni/express-mongo-start"><strong>⭐ Star the repo on GitHub</strong></a>
+  <strong>Built to help you start building.</strong>
+  <br />
+  <sub>Found it useful? A ⭐ helps more developers discover it.</sub>
+  <br /><br />
+  <a href="https://github.com/real-VrajSoni/express-mongo-start">
+    <img src="https://img.shields.io/badge/⭐_Star_this_repo-18181B?style=for-the-badge&logo=github" alt="Star this repository" />
+  </a>
 </p>
